@@ -4,16 +4,27 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 
 import { Navigation } from "../components/Navigation";
-import { ProductsList } from "../components/ProductsList";
 import { shopifyClient, parseShopifyResponse } from "../lib/shopify";
 
 export default function Index({ products }) {
+	const headerLinks = [
+		{
+			link: "/",
+			name: "Home",
+		},
+		{
+			link: "/products",
+			name: "Shop",
+		},
+		{
+			link: "/about",
+			name: "About us",
+		},
+	];
+
 	return (
 		<Box>
-			<Navigation />
-			<Container maxWidth="lg">
-				<ProductsList products={products} />
-			</Container>
+			<Navigation headerData={headerLinks} />
 		</Box>
 	);
 }

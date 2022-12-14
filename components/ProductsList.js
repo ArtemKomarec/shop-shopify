@@ -17,7 +17,7 @@ export const ProductsList = ({ products }) => {
 	return (
 		<Box>
 			{products && products.length > 0 ? (
-				<ImageList cols={5} gap={20}>
+				<ImageList cols={4} gap={20}>
 					{products.map((product) => (
 						<ImageListItem
 							style={{ cursor: "pointer" }}

@@ -12,10 +12,24 @@ import { BreadcrumbsNavigation } from "../../components/BreadcrumbsNavigation";
 import { shopifyClient, parseShopifyResponse } from "../../lib/shopify";
 
 export default function ProductPage({ product }) {
-	console.log(product);
+	const headerLinks = [
+		{
+			link: "/",
+			name: "Home",
+		},
+		{
+			link: "/products",
+			name: "Shop",
+		},
+		{
+			link: "/about",
+			name: "About us",
+		},
+	];
+
 	return (
 		<Box>
-			<Navigation />
+			<Navigation headerData={headerLinks} />
 			{product && (
 				<Container maxWidth="lg">
 					<BreadcrumbsNavigation title={product.title} />
@@ -57,8 +71,6 @@ export default function ProductPage({ product }) {
 export const getServerSideProps = async ({ params }) => {
 	const { productHandle } = params;
 	const product = await shopifyClient.product.fetchByHandle(productHandle);
-
-	console.log(product);
 
 	return {
 		props: {

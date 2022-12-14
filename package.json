@@ -20,7 +20,8 @@
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "shopify-buy": "^2.15.1"
+    "shopify-buy": "^2.15.1",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "eslint": "latest",

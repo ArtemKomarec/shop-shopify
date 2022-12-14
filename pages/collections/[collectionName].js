@@ -9,9 +9,24 @@ import { ProductsList } from "../../components/ProductsList";
 import { shopifyClient, parseShopifyResponse } from "../../lib/shopify";
 
 export default function CollectionPage({ products, collectionName }) {
+	const headerLinks = [
+		{
+			link: "/",
+			name: "Home",
+		},
+		{
+			link: "/products",
+			name: "Shop",
+		},
+		{
+			link: "/about",
+			name: "About us",
+		},
+	];
+
 	return (
 		<Box>
-			<Navigation />
+			<Navigation headerData={headerLinks} />
 			<Container maxWidth="lg">
 				<BreadcrumbsNavigation title={collectionName} />
 				<ProductsList products={products} />
