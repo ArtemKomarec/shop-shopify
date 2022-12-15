@@ -9,8 +9,12 @@ import { shopifyClient, parseShopifyResponse } from "../../lib/shopify";
 import { Sidebar } from "../../components/sidebar/sidebar";
 import { ShopBanner } from "../../components/shop-banner";
 import { MobileSidebar } from "../../components/sidebar/mobile-sidebar";
+import { Sorting } from "../../components/sorting";
+import { useState } from "react";
 
-export default function AllProductsPage({ products }) {
+export default function AllProductsPage({ products, collections }) {
+	const [sortOrdering, setSortOrdering] = useState();
+
 	const headerLinks = [
 		{
 			link: "/",
@@ -33,11 +37,20 @@ export default function AllProductsPage({ products }) {
 			>
 				<Box display="flex" flexDirection="row" gap="30px">
 					<Box display="flex" flexDirection="column">
-						<Sidebar />
+						<Sidebar collections={collections} />
 					</Box>
 					<Box>
 						<ShopBanner />
-						<MobileSidebar />
+						<Box
+							display="flex"
+							flexDirection="row"
+							gap="14px"
+							alignItems="center"
+						>
+							<Sorting products={products} sortOrdering={setSortOrdering} />
+							{console.log(sortOrdering)}
+							<MobileSidebar collections={collections} />
+						</Box>
 						<ProductsList products={products} />
 					</Box>
 				</Box>
@@ -46,11 +59,15 @@ export default function AllProductsPage({ products }) {
 	);
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (params) => {
 	const products = await shopifyClient.product.fetchAll();
+
+	const collectionsData = await shopifyClient.collection.fetchAllWithProducts();
+	const collections = parseShopifyResponse(collectionsData);
 
 	return {
 		props: {
+			collections,
 			products: parseShopifyResponse(products),
 		},
 	};

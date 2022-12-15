@@ -1,34 +1,39 @@
 import {
 	Box,
-	CssBaseline,
 	Drawer,
-	IconButton,
 	Link,
 	List,
 	ListItem,
 	ListItemButton,
+	Typography,
 } from "@mui/material";
 
-export const Sidebar = () => {
-	const productsSlugs = [
-		{
-			link: "/collections/battery",
-			name: "Battery",
-		},
-		{
-			link: "/collections/earphones",
-			name: "Earphones",
-		},
-	];
-
+export const Sidebar = ({ collections }) => {
 	const drawerWidth = 240;
 
 	const drawer = (
 		<List>
-			{productsSlugs.map((productSection) => (
-				<ListItem key={productSection.name} disablePadding>
+			<Typography
+				variant="h1"
+				sx={{
+					padding: "14px 16px",
+					fontSize: "24px",
+				}}
+			>
+				Categories
+			</Typography>
+			{collections.map((productSection) => (
+				<ListItem key={productSection.title} disablePadding>
 					<ListItemButton>
-						<Link href={productSection.link}>{productSection.name}</Link>
+						<Link
+							href={`/collections/${productSection.title}`}
+							sx={{
+								textDecoration: "none",
+								color: "#212529",
+							}}
+						>
+							{productSection.title}
+						</Link>
 					</ListItemButton>
 				</ListItem>
 			))}
@@ -52,9 +57,9 @@ export const Sidebar = () => {
 							boxSizing: "border-box",
 							maxWidth: drawerWidth,
 							width: "100%",
-							height: "240px",
-							border: "1px solid #ced4da",
+							border: "1px solid #eff2f7",
 							borderRadius: "5px",
+							backgroundColor: "#eff2f7",
 						},
 					}}
 					open

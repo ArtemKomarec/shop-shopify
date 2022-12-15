@@ -10,7 +10,7 @@ import {
 	ListItemButton,
 } from "@mui/material";
 
-export const MobileSidebar = () => {
+export const MobileSidebar = ({ collections }) => {
 	const [mobileOpen, setMobileOpen] = useState(false);
 
 	const handleDrawerToggle = () => {
@@ -18,23 +18,14 @@ export const MobileSidebar = () => {
 	};
 	const drawerWidth = 240;
 
-	const productsSlugs = [
-		{
-			link: "/collections/battery",
-			name: "Battery",
-		},
-		{
-			link: "/collections/earphones",
-			name: "Earphones",
-		},
-	];
-
 	const drawer = (
 		<List>
-			{productsSlugs.map((productSection) => (
-				<ListItem key={productSection.name} disablePadding>
+			{collections.map((productSection) => (
+				<ListItem key={productSection.title} disablePadding>
 					<ListItemButton>
-						<Link href={productSection.link}>{productSection.name}</Link>
+						<Link href={`/collections/${productSection.title}`}>
+							{productSection.title}
+						</Link>
 					</ListItemButton>
 				</ListItem>
 			))}

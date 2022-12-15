@@ -6,8 +6,10 @@ import Typography from "@mui/material/Typography";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
+import { MobileSidebar } from "./sidebar/mobile-sidebar";
+import SortIcon from "@mui/icons-material/Sort";
 
-export const ProductsList = ({ products }) => {
+export const ProductsList = ({ products, collections }) => {
 	const router = useRouter();
 	const goToProductPage = (productHandle) => {
 		console.log(productHandle);
@@ -15,7 +17,11 @@ export const ProductsList = ({ products }) => {
 	};
 
 	return (
-		<Box>
+		<Box
+			sx={{
+				marginTop: "70px;",
+			}}
+		>
 			{products && products.length > 0 ? (
 				<ImageList cols={4} gap={20}>
 					{products.map((product) => (
