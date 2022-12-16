@@ -1,10 +1,4 @@
-import {
-	Button,
-	ButtonBase,
-	Container,
-	styled,
-	Typography,
-} from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import banner from "../../assets/main-banner/bunny-duracell.png";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";

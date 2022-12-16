@@ -27,8 +27,7 @@ export default function Index({ products, collections }) {
 		<Box>
 			<Navigation headerData={headerLinks} />
 			<Banner />
-			{console.log(collections)}
-			<NewProducts />
+			<NewProducts collections={collections} />
 		</Box>
 	);
 }
