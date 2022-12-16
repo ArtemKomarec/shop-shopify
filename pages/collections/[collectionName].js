@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 
 import { Navigation } from "../../components/Navigation";
 import { BreadcrumbsNavigation } from "../../components/BreadcrumbsNavigation";
-import { ProductsList } from "../../components/ProductsList";
+import { ProductsList } from "../../components/products/ProductsList";
 import { shopifyClient, parseShopifyResponse } from "../../lib/shopify";
 
 export default function CollectionPage({ products, collectionName }) {

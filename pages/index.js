@@ -2,9 +2,12 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 
 import { Navigation } from "../components/Navigation";
-import { shopifyClient, parseShopifyResponse } from "../lib/shopify";
+import { Banner } from "../components/main/banner";
+import { NewProducts } from "../components/main/newProductsSection";
+import { shopifyClient } from "../lib/shopify";
+import { parseShopifyResponse } from "../lib/shopify";
 
-export default function Index({ products }) {
+export default function Index({ products, collections }) {
 	const headerLinks = [
 		{
 			link: "/",
@@ -23,6 +26,9 @@ export default function Index({ products }) {
 	return (
 		<Box>
 			<Navigation headerData={headerLinks} />
+			<Banner />
+			{console.log(collections)}
+			<NewProducts />
 		</Box>
 	);
 }
@@ -30,8 +36,12 @@ export default function Index({ products }) {
 export const getServerSideProps = async () => {
 	const products = await shopifyClient.product.fetchAll();
 
+	const collectionsData = await shopifyClient.collection.fetchAllWithProducts();
+	const collections = parseShopifyResponse(collectionsData);
+
 	return {
 		props: {
+			collections,
 			products: parseShopifyResponse(products),
 		},
 	};

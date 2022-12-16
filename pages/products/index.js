@@ -4,12 +4,12 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 
 import { Navigation } from "../../components/Navigation";
-import { ProductsList } from "../../components/ProductsList";
+import { ProductsList } from "../../components/products/ProductsList";
 import { shopifyClient, parseShopifyResponse } from "../../lib/shopify";
 import { Sidebar } from "../../components/sidebar/sidebar";
-import { ShopBanner } from "../../components/shop-banner";
+import { ShopBanner } from "../../components/products/shop-banner";
 import { MobileSidebar } from "../../components/sidebar/mobile-sidebar";
-import { Sorting } from "../../components/sorting";
+import { Sorting } from "../../components/products/sorting";
 import { useState } from "react";
 
 export default function AllProductsPage({ products, collections }) {
@@ -42,6 +42,7 @@ export default function AllProductsPage({ products, collections }) {
 					<Box>
 						<ShopBanner />
 						<Box
+							marginTop="40px"
 							display="flex"
 							flexDirection="row"
 							gap="14px"
