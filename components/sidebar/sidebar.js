@@ -26,7 +26,7 @@ export const Sidebar = ({ collections }) => {
 				<ListItem key={productSection.title} disablePadding>
 					<ListItemButton>
 						<Link
-							href={`/collections/${productSection.title}`}
+							href={`/collections/${productSection.handle}`}
 							sx={{
 								textDecoration: "none",
 								color: "#212529",

@@ -6,6 +6,7 @@ import { Banner } from "../components/main/banner";
 import { NewProducts } from "../components/main/newProductsSection";
 import { shopifyClient } from "../lib/shopify";
 import { parseShopifyResponse } from "../lib/shopify";
+import { NewOffers } from "../components/main/new-offers";
 
 export default function Index({ products, collections }) {
 	const headerLinks = [
@@ -28,6 +29,7 @@ export default function Index({ products, collections }) {
 			<Navigation headerData={headerLinks} />
 			<Banner />
 			<NewProducts collections={collections} />
+			<NewOffers products={products} />
 		</Box>
 	);
 }

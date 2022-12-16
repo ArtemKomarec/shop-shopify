@@ -4,7 +4,19 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 export const NewProducts = ({ collections }) => {
 	return (
 		<Container maxWidth="lg" sx={{ padding: "40px 20px" }}>
-			<Box marginTop="40px" display="flex" flexDirection="row" gap="40px">
+			<Typography variant="h1" align="center" fontSize={30} fontWeight={600}>
+				New Arrival
+			</Typography>
+			<Typography align="center" fontSize={16} fontWeight={400} color="#7e7e7e">
+				Our categories
+			</Typography>
+			<Box
+				marginTop="40px"
+				display="flex"
+				flexDirection="row"
+				gap="40px"
+				justifyContent="center"
+			>
 				{collections
 					.slice(Math.max(collections.length - 3, 0))
 					.map((currentCollection) => (
@@ -28,9 +40,7 @@ export const NewProducts = ({ collections }) => {
 									backgroundPosition: "80% 20%",
 									backgroundColor: "#eff2f7",
 								}}
-							>
-								{console.log(currentCollection)}
-							</Box>
+							></Box>
 							<Box
 								sx={{
 									backgroundColor: "#eff2f7",
@@ -41,7 +51,7 @@ export const NewProducts = ({ collections }) => {
 									{currentCollection.title}
 								</Typography>
 								<Typography
-									fontSize={22}
+									fontSize={18}
 									fontWeight={300}
 									lineHeight={1.2}
 									marginTop="12px"
